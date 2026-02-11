@@ -1,54 +1,118 @@
-# Remotion video
+# Zenn Hackathon 2026 - Intro Video
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Remotionを使用した動画編集プロジェクト
 
-Welcome to your Remotion project!
+## 📝 概要
 
-## Commands
+このプロジェクトは、Remotionを使って既存の動画（`IMG_2350.MOV`）を編集し、以下の要素を追加します：
 
-**Install Dependencies**
+- 画面下部1/3にキービジュアル（`keyvisual.png`）を配置して観客を隠す
+- 1440フレームから回転アニメーション付きの字幕を表示
+- テキストオーバーレイとエフェクト
 
-```console
-npm i
+## 🚀 セットアップ
+
+### 依存関係のインストール
+
+```bash
+pnpm install
 ```
 
-**Start Preview**
+### 開発サーバーの起動
 
-```console
-npm run dev
+```bash
+pnpm run dev
 ```
 
-**Render video**
+ブラウザが開き、Remotion Studioが起動します。
 
-```console
-npx remotion render
+## 🎬 コンポジション
+
+プロジェクトには以下のコンポジションが含まれています：
+
+### VideoEdit
+既存動画を編集するメインのコンポジション
+
+- **サイズ**: 1920x1080
+- **FPS**: 30
+- **長さ**: 300フレーム（10秒）
+- **特徴**:
+  - 動画の6100〜8100フレーム区間を使用
+  - 画面下部にキービジュアルをオーバーレイ
+  - 1440フレームから「山本彩武道館LIVE 2026.7.14 Thu 開催決定！！！」の字幕が回転アニメーション付きで表示
+
+### Shorts
+YouTubeショート風の動画
+
+- **サイズ**: 1920x1080
+- **FPS**: 30
+- **長さ**: 150フレーム（5秒）
+
+### Go126Shorts / AgentTeamsVideo
+その他のサンプルコンポジション
+
+## 📂 ファイル構成
+
+```
+public/
+  ├── IMG_2350.MOV       # 元動画
+  ├── keyvisual.png      # オーバーレイ用画像
+  ├── happy.png
+  ├── shining_star.mp3
+  └── wonderland.wav
+src/
+  ├── VideoEdit.tsx      # メイン編集コンポーネント
+  ├── Shorts.tsx
+  ├── SlideShow.tsx
+  └── Root.tsx           # コンポジション定義
 ```
 
-**Upgrade Remotion**
+## 🎨 編集内容のカスタマイズ
 
-```console
+### 字幕の表示タイミングを変更
+
+[VideoEdit.tsx](src/VideoEdit.tsx)の`<Sequence from={1440}>`の数値を変更
+
+### キービジュアルの高さを調整
+
+[VideoEdit.tsx](src/VideoEdit.tsx)の`height: "33.33%"`を変更
+
+### テキストの内容を変更
+
+Remotion Studioの右パネルから`overlayText`プロパティを編集
+
+## 📹 動画の出力
+
+```bash
+npx remotion render VideoEdit output.mp4
+```
+
+特定の設定で出力：
+
+```bash
+npx remotion render VideoEdit output.mp4 --codec=h264 --height=1080 --width=1920
+```
+
+## 🔧 その他のコマンド
+
+**Remotionのアップグレード**
+
+```bash
 npx remotion upgrade
 ```
 
-## Docs
+**Lint実行**
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+```bash
+pnpm run lint
+```
 
-## Help
+## 📚 ドキュメント
 
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
+- [Remotion公式ドキュメント](https://www.remotion.dev/docs)
+- [Remotion Discord](https://discord.gg/6VzzNDwUwV)
 
-## Issues
+## 📄 ライセンス
 
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
+UNLICENSED (Private Project)
 
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
