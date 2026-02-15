@@ -3,12 +3,22 @@ import { Composition } from "remotion";
 
 import { AgentTeamsVideo } from "./SlideShow";
 import { VideoEdit, VideoEditSchema } from "./VideoEdit";
+import { TavinikkiyAgentVideo } from "./scenes/tavinikkiy/TavinikkiyAgentVideo";
 
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* Tavinikkiy Agent紹介動画（3分） */}
+      <Composition
+        id="TavinikkiyAgent"
+        component={TavinikkiyAgentVideo}
+        durationInFrames={3390}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
       {/* Go 1.26紹介用の縦型ショート動画 */}
       <Composition
         id="Go126Shorts"

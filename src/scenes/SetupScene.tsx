@@ -145,7 +145,7 @@ export const SetupScene: React.FC = () => {
             fontWeight: "500",
           }}
         >
-          📅　2025年2月11日リリース
+          📅 2025年2月11日リリース
         </div>
         <div
           style={{
